@@ -1,4 +1,2 @@
-/card.o
-/deck.o
-/gamblingc
-/main.o
+*.o
+gamblingc
