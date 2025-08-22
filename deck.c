@@ -41,3 +41,11 @@ struct Deck *randomise_deck(struct Deck *deck) {
     }
     return deck;
 }
+
+struct Card *draw_card_from_deck(struct Deck *deck)
+{
+    if (!deck || deck->next >= 52)    /* empty or invalid */
+        return NULL;
+
+    return deck->cards[deck->next++];
+}

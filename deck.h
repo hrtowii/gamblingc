@@ -6,8 +6,4 @@ struct Deck {
 struct Deck *generate_deck();
 struct Deck *randomise_deck(struct Deck *cards);
 
-static inline struct Card *draw_card_from_deck(struct Deck *deck)
-{
-    if (!deck || deck->next >= 52) return NULL;
-    return deck->cards[deck->next++];
-}
+struct Card *draw_card_from_deck(struct Deck *deck);
