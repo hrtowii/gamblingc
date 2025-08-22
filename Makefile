@@ -2,7 +2,7 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
-OBJS = main.o card.o deck.o blackjack.o
+OBJS = main.o card.o deck.o blackjack.o utils.o
 DEPS = $(OBJS:.o=.d)  # e.g., main.d, card.d, etc.
 
 -include $(DEPS)
