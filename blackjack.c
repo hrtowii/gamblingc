@@ -89,6 +89,7 @@ void blackjack(struct Deck deck) {
     // draw 2 cards from randomised deck, into your own hand
     // dealer gets 2, 1 is card.flipped = true;
     bool won = false;
+    bool stood = false;
     while (won == false) {
         printf("drawing...\n");
         struct blackjack_hand player_hand = {.count = 0};
@@ -105,9 +106,9 @@ void blackjack(struct Deck deck) {
         if (hand_value(&player_hand) == 21) {
             printf("blackjack!\n");
             won = true;
+            stood = true;
         }
         // hit / stand stage
-        bool stood = false;
         while (!stood) {
             int choice = get_int_input("hit or stand? 1/2\n");
             if (choice == 1) {
@@ -140,7 +141,13 @@ void blackjack(struct Deck deck) {
 
         int dealer_score = hand_value(&dealer_hand);
         int player_score = hand_value(&player_hand);
-        if (dealer_score > 21 || player_score > dealer_score) {
+        if (player_score > 21) {
+            printf("you lost! (busted)\n");
+            break;
+        } else if (dealer_score > 21) {
+            printf("you win! (dealer busted)\n");
+            won = true;
+        } else if (player_score > dealer_score) {
             printf("you win!\n");
             won = true;
         } else if (dealer_score > player_score) {
@@ -148,6 +155,7 @@ void blackjack(struct Deck deck) {
             break;
         } else {
             printf("tie!\n");
+            break;
         }
         // needed function: print game state
 }
