@@ -1,2 +1,1 @@
-#include "card.h"
-void blackjack(struct Card** deck);
+void blackjack(struct Deck deck);

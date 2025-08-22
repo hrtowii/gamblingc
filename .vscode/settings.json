@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "blackjack.h": "c",
+        "card.h": "c",
+        "time.h": "c",
+        "deck.h": "c",
+        "stdbool.h": "c"
+    }
+}

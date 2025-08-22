@@ -2,21 +2,19 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
-OBJS = main.o card.o deck.o
+OBJS = main.o card.o deck.o blackjack.o
+DEPS = $(OBJS:.o=.d)  # e.g., main.d, card.d, etc.
+
+-include $(DEPS)
 
 all: gamblingc
 
 gamblingc: $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-main.o: main.c card.h deck.h
-	$(CC) $(CFLAGS) -c main.c
-
-card.o: card.c card.h
-	$(CC) $(CFLAGS) -c card.c
-
-deck.o: deck.c deck.h card.h
-	$(CC) $(CFLAGS) -c deck.c
+# Compile .c -> .o AND generate .d dependency file
+%.o: %.c
+	$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 clean:
-	rm -rf *.o gamblingc
+	rm -f *.o *.d gamblingc
