@@ -4,6 +4,8 @@
         "card.h": "c",
         "time.h": "c",
         "deck.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "stdio.h": "c",
+        "xutility": "c"
     }
 }
